@@ -14,7 +14,7 @@ export default {
       <a href="#home" class="active">Home</a>
       <a href="#services">Servizi</a>
       <a href="#projects">Progetti</a>
-      <a href="#experiences">Esperienza</a>
+      <!-- <a href="#experiences">Esperienza</a> -->
       <a href="#contacts">Contatti</a>
     </nav>
   </header>
