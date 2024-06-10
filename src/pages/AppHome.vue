@@ -195,9 +195,6 @@ export default {
             <a href="https://github.com/gianlucanied/proj-html-vuejs"
               ><i class="fa-brands fa-github"></i
             ></a>
-            <a href="https://avadadriving.netlify.app/"
-              ><i class="fa-solid fa-globe"></i
-            ></a>
           </div>
         </div>
 
