@@ -18,6 +18,10 @@
 
 html {
   font-size: 60%;
+}
+
+body,
+html {
   overflow-x: hidden;
 }
 
