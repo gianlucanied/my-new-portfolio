@@ -28,15 +28,7 @@ export default {
     <div class="home-content">
       <h1>Hi, it's <span>Gianluca</span></h1>
       <h3 class="text-animation">I'm a <span></span></h3>
-      <p>
-        💁🏻‍♂️ Sono un Jr. Full Stack Web Developer, ambizioso e appassionato del
-        mondo Tech in tutte le sue sfaccettature. Ho appena concluso con
-        successo il corso di Boolean Academy, dove ho acquisito competenze nelle
-        principali tecnologie di sviluppo sia per il Frontend che per il
-        Backend. <br />💪🏻 Con una solida base di conoscenze tecniche e una forte
-        predisposizione al lavoro di squadra, sono pronto ad affrontare sfide
-        stimolanti nel campo dello sviluppo software.
-      </p>
+      <p>{{ $t("testoPresentazione") }}<</p>
 
       <div class="social-icons">
         <a href="https://www.linkedin.com/in/gianluca-nieddu-8149a3236/"
@@ -51,7 +43,7 @@ export default {
       </div>
 
       <div class="btn-group">
-        <a href="#projects" class="btn">I miei progetti</a>
+        <a href="#projects" class="btn">{{ $t("projects") }}</a>
       </div>
     </div>
     <div class="home-img">
@@ -60,18 +52,14 @@ export default {
   </section>
 
   <section data-aos="flip-up" id="services" class="services">
-    <h2 class="heading">Servizi</h2>
+    <h2 class="heading">{{ $t("services") }}</h2>
 
     <div class="services-container">
       <div class="service-box">
         <div class="service-info">
           <h4>Backend Development</h4>
           <p>
-            Ho studiato i linguaggi di programmazione backend PHP e Laravel,
-            approfondendo le tecniche per sviluppare applicazioni web robuste e
-            scalabili. Inoltre, ho acquisito competenze nell'uso di phpMyAdmin
-            per la gestione e l'amministrazione dei database, garantendo una
-            gestione efficiente e sicura delle informazioni.
+            {{ $t("pBackend") }}
           </p>
         </div>
       </div>
@@ -79,12 +67,7 @@ export default {
         <div class="service-info">
           <h4>Frontend Development</h4>
           <p>
-            Ho studiato i linguaggi e le tecnologie frontend HTML, CSS,
-            JavaScript, e Vue.js, approfondendo le tecniche per creare
-            interfacce utente intuitive e responsive. Inoltre, ho acquisito
-            competenze nell'uso di Bootstrap per sviluppare design eleganti e
-            funzionali, garantendo un'esperienza utente ottimale su diverse
-            piattaforme e dispositivi.
+            {{ $t("pFrontend") }}
           </p>
         </div>
       </div>
@@ -103,7 +86,7 @@ export default {
 
   <section data-aos="fade-up" class="testimonials" id="projects">
     <div class="testimonial-box">
-      <h2 data-aos="zoom-in" class="heading">Progetti</h2>
+      <h2 data-aos="zoom-in" class="heading">{{ $t("projects") }}</h2>
 
       <div class="wrapper">
         <div class="testimonial-item">
@@ -124,10 +107,7 @@ export default {
           </swiper>
           <h2>Padel Club Alghero</h2>
           <p>
-            Ho creato un sito vetrina completamente responsive, realizzato
-            interamente con Vue.js. <br />Il mio obiettivo era quello di offrire
-            un'esperienza intuitiva e semplice per tutti i visitatori, sia da
-            desktop che da dispositivi mobili.
+            {{ $t("pProgetto1") }}
           </p>
           <div class="icons-project">
             <a href="https://github.com/gianlucanied/pclub-project"
@@ -157,10 +137,7 @@ export default {
           </swiper>
           <h2>BTrainer</h2>
           <p>
-            Ho creato, in collaborazione con un team, una web app funzionante
-            per la ricerca del personal trainer ideale. Per il frontend abbiamo
-            utilizzato Vue.js, mentre per il backend abbiamo impiegato PHP. La
-            gestione del database è stata realizzata tramite phpMyAdmin.
+            {{ $t("pProgetto2") }}
           </p>
           <div class="icons-project">
             <a href="https://github.com/gianlucanied/BTrainer"
@@ -187,9 +164,7 @@ export default {
           </swiper>
           <h2>Avada Driving School</h2>
           <p>
-            In gruppo abbiamo creato un sito vetrina per un possibile Rent a car
-            utilizzando Vue.js. Il sito contiene 3 pagine navigabili e
-            compleatmente responsive.
+            {{ $t("pProgetto3") }}
           </p>
           <div class="icons-project">
             <a href="https://github.com/gianlucanied/proj-html-vuejs"
@@ -222,10 +197,10 @@ export default {
               ><img src="/public/Biglietto treno.png" alt=""
             /></swiper-slide>
           </swiper>
-          <h2>Altri progetti</h2>
+          <h2>{{ $t("otherProjects") }}</h2>
+
           <p>
-            Tutti altri piccoli progetti creati da me, principalmente
-            utilizzando HTML5, CSS e JavaScript
+            {{ $t("pProgetto4") }}
           </p>
           <div class="icons-project">
             <a href="https://github.com/gianlucanied?tab=repositories"

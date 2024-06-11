@@ -6,7 +6,7 @@ export default {
 
 <template>
   <footer class="footer" id="contacts">
-    <h2 data-aos="zoom-in" class="heading">Contatti</h2>
+    <h2 data-aos="zoom-in" class="heading">{{ $t("contacts") }}</h2>
     <div class="social">
       <a href="mailto:gianluca.nieddu96@gmail.com"
         ><i class="fa-solid fa-envelope"></i

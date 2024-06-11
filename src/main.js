@@ -4,13 +4,16 @@ import App from "./App.vue";
 import { router } from "./router";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import i18n from "./i18n";
 
+// Crea l'app Vue
 const app = createApp(App);
 
-// Usa router e altri plugin
+// Usa i plugin necessari
+app.use(i18n);
 app.use(router);
 
-// Monta l'app
+// Monta l'app sull'elemento DOM
 app.mount("#app");
 
 // Inizializza AOS dopo che l'app è stata montata
