@@ -28,7 +28,7 @@ export default {
     <div class="home-content">
       <h1>Hi, it's <span>Gianluca</span></h1>
       <h3 class="text-animation">I'm a <span></span></h3>
-      <p>{{ $t("testoPresentazione") }}<</p>
+      <p v-html="$t('testoPresentazione')"></p>
 
       <div class="social-icons">
         <a href="https://www.linkedin.com/in/gianluca-nieddu-8149a3236/"
@@ -58,17 +58,13 @@ export default {
       <div class="service-box">
         <div class="service-info">
           <h4>Backend Development</h4>
-          <p>
-            {{ $t("pBackend") }}
-          </p>
+          <p v-html="$t('pBackend')"></p>
         </div>
       </div>
       <div class="service-box">
         <div class="service-info">
           <h4>Frontend Development</h4>
-          <p>
-            {{ $t("pFrontend") }}
-          </p>
+          <p v-html="$t('pFrontend')"></p>
         </div>
       </div>
     </div>

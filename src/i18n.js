@@ -10,12 +10,11 @@ const messages = {
     projects: "Projects",
     contacts: "Contacts",
     testoPresentazione:
-      "💁🏻‍♂️ I'm a Jr. Full Stack Web Developer, ambitious and passionate about the Tech world in all its facets. I have just successfully completed the Boolean Academy course, where I gained skills in the main development technologies for both Frontend and Backend." +
-      "💪🏻 With a solid foundation of technical knowledge and a strong predisposition for teamwork, I am ready to tackle challenging projects in the field of software development.",
+      "💁🏻‍♂️ I'm a Jr. Full Stack Web Developer, ambitious and passionate about the Tech world in all its facets. I have just successfully completed the Boolean Academy course, where I gained skills in the main development technologies for both <b>Frontend</b> and <b>Backend</b>. <br/>💪🏻 With a solid foundation of technical knowledge and a strong predisposition for teamwork, I am ready to tackle challenging projects in the field of software development.",
     pBackend:
-      "I have studied backend programming languages such as PHP and Laravel, delving into techniques to develop robust and scalable web applications. Additionally, I have gained skills in using phpMyAdmin for database management and administration, ensuring efficient and secure handling of information.",
+      "I have studied backend programming languages such as <b>PHP</b> and <b>Laravel</b>, delving into techniques to develop robust and scalable web applications. Additionally, I have gained skills in using <b>phpMyAdmin</b> for database management and administration, ensuring efficient and secure handling of information.",
     pFrontend:
-      "I have studied frontend languages and technologies such as HTML, CSS, JavaScript, and Vue.js, delving into techniques for creating intuitive and responsive user interfaces. Additionally, I have gained skills in using Bootstrap to develop elegant and functional designs, ensuring an optimal user experience across various platforms and devices.",
+      "I have studied frontend languages and technologies such as <b>HTML</b>, <b>CSS</b>, <b>JavaScript</b>, and <b>Vue.js</b>, delving into techniques for creating intuitive and responsive user interfaces. Additionally, I have gained skills in using <b>Bootstrap</b> to develop elegant and functional designs, ensuring an optimal user experience across various platforms and devices.",
     pProgetto1:
       "I created a fully responsive showcase website entirely built with Vue.js. My goal was to provide an intuitive and straightforward experience for all visitors, whether on desktop or mobile devices.",
     pProgetto2:
@@ -34,11 +33,11 @@ const messages = {
     projects: "Miei Progetti",
     contacts: "Contatti",
     testoPresentazione:
-      "💁🏻‍♂️ Sono un Jr. Full Stack Web Developer, ambizioso e appassionato del mondo Tech in tutte le sue sfaccettature. Ho appena concluso con successo il corso di Boolean Academy, dove ho acquisito competenze nelle principali tecnologie di sviluppo sia per il Frontend che per il Backend. 💪🏻 Con una solida base di conoscenze tecniche e una forte predisposizione al lavoro di squadra, sono pronto ad affrontare sfide stimolanti nel campo dello sviluppo software. ",
+      "💁🏻‍♂️ Sono un Jr. Full Stack Web Developer, ambizioso e appassionato del mondo Tech in tutte le sue sfaccettature. Ho appena concluso con successo il corso di Boolean Academy, dove ho acquisito competenze nelle principali tecnologie di sviluppo sia per il <b>Frontend</b> che per il <b>Backend</b>. <br/>💪🏻 Con una solida base di conoscenze tecniche e una forte predisposizione al lavoro di squadra, sono pronto ad affrontare sfide stimolanti nel campo dello sviluppo software. ",
     pBackend:
-      "Ho studiato i linguaggi di programmazione backend PHP e Laravel, approfondendo le tecniche per sviluppare applicazioni web robuste e scalabili. Inoltre, ho acquisito competenze nell'uso di phpMyAdmin per la gestione e l'amministrazione dei database, garantendo una gestione efficiente e sicura delle informazioni. ",
+      "Ho studiato i linguaggi di programmazione backend <b>PHP</b> e <b>Laravel</b>, approfondendo le tecniche per sviluppare applicazioni web robuste e scalabili. Inoltre, ho acquisito competenze nell'uso di <b>phpMyAdmin</b> per la gestione e l'amministrazione dei database, garantendo una gestione efficiente e sicura delle informazioni. ",
     pFrontend:
-      "Ho studiato i linguaggi e le tecnologie frontend HTML, CSS, JavaScript, e Vue.js, approfondendo le tecniche per creare interfacce utente intuitive e responsive. Inoltre, ho acquisito competenze nell'uso di Bootstrap per sviluppare design eleganti e funzionali, garantendo un'esperienza utente ottimale su diverse piattaforme e dispositivi. ",
+      "Ho studiato i linguaggi e le tecnologie frontend <b>HTML</b>, <b>CSS</b>, <b>JavaScript</b>, e <b>Vue.js</b>, approfondendo le tecniche per creare interfacce utente intuitive e responsive. Inoltre, ho acquisito competenze nell'uso di Bootstrap per sviluppare design eleganti e funzionali, garantendo un'esperienza utente ottimale su diverse piattaforme e dispositivi. ",
     pProgetto1:
       "Ho creato un sito vetrina completamente responsive, realizzato interamente con Vue.js. Il mio obiettivo era quello di offrire un'esperienza intuitiva e semplice per tutti i visitatori, sia da desktop che da dispositivi mobili.",
     pProgetto2:
