@@ -112,7 +112,7 @@ export default {
             <a href="https://github.com/gianlucanied/pclub-project"
               ><i class="fa-brands fa-github"></i
             ></a>
-            <a href="https://padelalghero.netlify.app/"
+            <a href="https://padelalghero.com/"
               ><i class="fa-solid fa-globe"></i
             ></a>
           </div>
