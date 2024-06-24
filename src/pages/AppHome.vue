@@ -44,6 +44,9 @@ export default {
 
       <div class="btn-group">
         <a href="#projects" class="btn">{{ $t("projects") }}</a>
+        <a href="/Gianluca.Nieddu.pdf" id="cv-button" download class="btn"
+          >Download CV</a
+        >
       </div>
     </div>
     <div class="home-img">

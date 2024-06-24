@@ -422,7 +422,7 @@ span {
 
 .service-box {
   background-color: var(--main-color);
-  height: 350px;
+  height: auto;
   border-radius: 3rem;
   border: 5px solid transparent;
   cursor: pointer;
@@ -502,7 +502,7 @@ span {
 .service-info p {
   font-size: 1.6rem;
   font-weight: 600;
-  max-height: 100px;
+  /* max-height: 100px; */
   line-height: 1.7;
   margin: auto;
 }
@@ -686,9 +686,7 @@ span {
   .footer {
     padding: 2rem 3%;
   }
-  .service-box {
-    height: 335px;
-  }
+
   .service-info h4 {
     line-height: 1;
     padding-bottom: 20px;
@@ -740,7 +738,7 @@ span {
     margin: 0 auto;
   }
   .home-img img {
-    width: 70vw;
+    width: 50vw;
   }
   .services h2 {
     margin-bottom: 3rem;
@@ -765,5 +763,8 @@ span {
   .service-box {
     height: 520px;
     padding-bottom: 40px;
+  }
+  .home-img img {
+    width: 70vw;
   }
 }
