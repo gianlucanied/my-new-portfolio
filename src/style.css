@@ -487,7 +487,6 @@ span {
   flex-direction: column;
   text-align: left;
   height: auto;
-  /* max-height: 200px; */
   justify-content: left;
   align-items: baseline;
   padding: 5rem 5rem;
@@ -761,8 +760,8 @@ span {
 
 @media (max-width: 514px) {
   .service-box {
-    height: 520px;
-    padding-bottom: 40px;
+    height: auto;
+    /* padding-bottom: 40px; */
   }
   .home-img img {
     width: 70vw;

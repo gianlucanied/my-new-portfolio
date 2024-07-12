@@ -44,7 +44,7 @@ export default {
 
       <div class="btn-group">
         <a href="#projects" class="btn">{{ $t("projects") }}</a>
-        <a href="/Gianluca.Nieddu.pdf" id="cv-button" download class="btn"
+        <a href="/Gianluca.Nieddu1.pdf" id="cv-button" download class="btn"
           >Download CV</a
         >
       </div>
@@ -80,6 +80,7 @@ export default {
       <i class="fa-brands fa-sass"></i>
       <i class="bx bxl-php"></i>
       <i class="fa-brands fa-laravel"></i>
+      <i class="bx bxl-java"></i>
     </div>
   </section>
 
