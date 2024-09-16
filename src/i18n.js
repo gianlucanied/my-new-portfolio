@@ -23,6 +23,8 @@ const messages = {
       "As a team, we created a showcase website for a potential car rental service using Vue.js. The site includes three navigable and fully responsive pages.",
     pProgetto4:
       "All other small projects were created by me, primarily using HTML5, CSS, and JavaScript.",
+    pProgetto5:
+      "I developed a Pokédex using JavaScript that makes an API call to PokeAPI to retrieve Pokémon data. Then, I implemented a search bar that allows filtering Pokémon by name, returning only those that match the entered search term.",
     otherProjects: "Other projects",
   },
   it: {
@@ -46,6 +48,9 @@ const messages = {
       "In gruppo abbiamo creato un sito vetrina per un possibile Rent a car utilizzando Vue.js. Il sito contiene 3 pagine navigabili e completamente responsive.",
     pProgetto4:
       "Tutti altri piccoli progetti creati da me, principalmente utilizzando HTML5, CSS e JavaScript.",
+    pProgetto5:
+      "Ho realizzato un Pokédex utilizzando JavaScript che effettua una chiamata API a PokeAPI per ottenere i dati dei Pokémon. Successivamente, ho implementato una barra di ricerca che permette di filtrare i Pokémon in base al nome, restituendo solo quelli che corrispondono al termine di ricerca inserito.",
+
     otherProjects: "Altri progetti",
   },
 };
