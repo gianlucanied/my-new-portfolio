@@ -81,6 +81,7 @@ export default {
       <i class="bx bxl-php"></i>
       <i class="fa-brands fa-laravel"></i>
       <i class="bx bxl-java"></i>
+      <i class="bx bxl-visual-studio"></i>
     </div>
   </section>
 
