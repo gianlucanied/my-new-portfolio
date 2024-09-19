@@ -5,8 +5,8 @@ export default {
 </script>
 
 <template>
-  <footer class="footer" id="contacts">
-    <h2 data-aos="zoom-in" class="heading">{{ $t("contacts") }}</h2>
+  <footer data-aos="zoom-in" class="footer" id="contacts">
+    <h2 class="heading">{{ $t("contacts") }}</h2>
     <div class="social">
       <a href="mailto:gianluca.nieddu96@gmail.com"
         ><i class="fa-solid fa-envelope"></i

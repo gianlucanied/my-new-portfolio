@@ -87,7 +87,7 @@ export default {
 
   <section data-aos="fade-up" class="testimonials" id="projects">
     <div class="testimonial-box">
-      <h2 data-aos="zoom-in" class="heading">{{ $t("projects") }}</h2>
+      <h2 class="heading">{{ $t("projects") }}</h2>
 
       <div class="wrapper">
         <div class="testimonial-item">
