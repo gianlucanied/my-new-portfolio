@@ -128,33 +128,6 @@ export default {
             class="mySwiper"
           >
             <swiper-slide
-              ><img src="/public/homepage-btrainer.png" alt=""
-            /></swiper-slide>
-            <swiper-slide>
-              <img src="/public/btrainer-2.png" alt="" /></swiper-slide
-            ><swiper-slide>
-              <img src="/public/btrainer3.png" alt=""
-            /></swiper-slide>
-          </swiper>
-          <h2>BTrainer</h2>
-          <p>
-            {{ $t("pProgetto2") }}
-          </p>
-          <div class="icons-project">
-            <a href="https://github.com/gianlucanied/BTrainer"
-              ><i class="fa-brands fa-github"></i
-            ></a>
-          </div>
-        </div>
-
-        <div class="testimonial-item">
-          <swiper
-            :effect="'cards'"
-            :grabCursor="true"
-            :modules="modules"
-            class="mySwiper"
-          >
-            <swiper-slide
               ><img src="/public/Pokedex2.png" alt=""
             /></swiper-slide>
             <swiper-slide
@@ -173,6 +146,32 @@ export default {
             ></a>
             <a href="https://pokedexgnieddu.netlify.app/"
               ><i class="fa-solid fa-globe"></i
+            ></a>
+          </div>
+        </div>
+        <div class="testimonial-item">
+          <swiper
+            :effect="'cards'"
+            :grabCursor="true"
+            :modules="modules"
+            class="mySwiper"
+          >
+            <swiper-slide
+              ><img src="/public/homepage-btrainer.png" alt=""
+            /></swiper-slide>
+            <swiper-slide>
+              <img src="/public/btrainer-2.png" alt="" /></swiper-slide
+            ><swiper-slide>
+              <img src="/public/btrainer3.png" alt=""
+            /></swiper-slide>
+          </swiper>
+          <h2>BTrainer</h2>
+          <p>
+            {{ $t("pProgetto2") }}
+          </p>
+          <div class="icons-project">
+            <a href="https://github.com/gianlucanied/BTrainer"
+              ><i class="fa-brands fa-github"></i
             ></a>
           </div>
         </div>
