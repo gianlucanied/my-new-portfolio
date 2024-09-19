@@ -98,36 +98,6 @@ export default {
             class="mySwiper"
           >
             <swiper-slide
-              ><img src="/public/Pokedex2.png" alt=""
-            /></swiper-slide>
-            <swiper-slide
-              ><img src="/public/pokedex1.png" alt="" /></swiper-slide
-            ><swiper-slide
-              ><img src="/public/pokedex3.png" alt=""
-            /></swiper-slide>
-          </swiper>
-          <h2>Pokèdex</h2>
-          <p>
-            {{ $t("pProgetto5") }}
-          </p>
-          <div class="icons-project">
-            <a href="https://github.com/gianlucanied/proj-html-vuejs"
-              ><i class="fa-brands fa-github"></i
-            ></a>
-            <a href="https://pokedexgnieddu.netlify.app/"
-              ><i class="fa-solid fa-globe"></i
-            ></a>
-          </div>
-        </div>
-
-        <div class="testimonial-item">
-          <swiper
-            :effect="'cards'"
-            :grabCursor="true"
-            :modules="modules"
-            class="mySwiper"
-          >
-            <swiper-slide
               ><img src="/public/home-padel.png" alt=""
             /></swiper-slide>
             <swiper-slide
@@ -173,6 +143,36 @@ export default {
           <div class="icons-project">
             <a href="https://github.com/gianlucanied/BTrainer"
               ><i class="fa-brands fa-github"></i
+            ></a>
+          </div>
+        </div>
+
+        <div class="testimonial-item">
+          <swiper
+            :effect="'cards'"
+            :grabCursor="true"
+            :modules="modules"
+            class="mySwiper"
+          >
+            <swiper-slide
+              ><img src="/public/Pokedex2.png" alt=""
+            /></swiper-slide>
+            <swiper-slide
+              ><img src="/public/pokedex1.png" alt="" /></swiper-slide
+            ><swiper-slide
+              ><img src="/public/pokedex3.png" alt=""
+            /></swiper-slide>
+          </swiper>
+          <h2>Pokèdex</h2>
+          <p>
+            {{ $t("pProgetto5") }}
+          </p>
+          <div class="icons-project">
+            <a href="https://github.com/gianlucanied/proj-html-vuejs"
+              ><i class="fa-brands fa-github"></i
+            ></a>
+            <a href="https://pokedexgnieddu.netlify.app/"
+              ><i class="fa-solid fa-globe"></i
             ></a>
           </div>
         </div>
