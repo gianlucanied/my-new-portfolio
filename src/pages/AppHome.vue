@@ -31,22 +31,14 @@ export default {
       <p v-html="$t('testoPresentazione')"></p>
 
       <div class="social-icons">
-        <a href="https://www.linkedin.com/in/gianluca-nieddu-8149a3236/"
-          ><i class="fa-brands fa-linkedin"></i
-        ></a>
-        <a href="https://github.com/gianlucanied"
-          ><i class="fa-brands fa-github"></i
-        ></a>
-        <a href="https://www.instagram.com/gianlucanied/"
-          ><i class="fa-brands fa-instagram"></i
-        ></a>
+        <a href="https://www.linkedin.com/in/gianluca-nieddu-8149a3236/"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://github.com/gianlucanied"><i class="fa-brands fa-github"></i></a>
+        <a href="https://www.instagram.com/gianlucanied/"><i class="fa-brands fa-instagram"></i></a>
       </div>
 
       <div class="btn-group">
         <a href="#projects" class="btn">{{ $t("projects") }}</a>
-        <a href="/Gianluca.Nieddu.pdf" id="cv-button" download class="btn"
-          >Download CV</a
-        >
+        <a href="/Gianluca.Nieddu.pdf" id="cv-button" download class="btn">Download CV</a>
       </div>
     </div>
     <div class="home-img">
@@ -90,142 +82,94 @@ export default {
       <h2 class="heading">{{ $t("projects") }}</h2>
 
       <div class="wrapper">
+
         <div class="testimonial-item">
-          <swiper
-            :effect="'cards'"
-            :grabCursor="true"
-            :modules="modules"
-            class="mySwiper"
-          >
-            <swiper-slide
-              ><img src="/public/home-padel.png" alt=""
-            /></swiper-slide>
-            <swiper-slide
-              ><img src="/public/about-padel.png" alt="" /></swiper-slide
-            ><swiper-slide
-              ><img src="/public/contacts-padel.png" alt=""
-            /></swiper-slide>
+          <swiper :effect="'cards'" :grabCursor="true" :modules="modules" class="mySwiper">
+            <swiper-slide><img src="/public/Marketplace.png" alt="" /></swiper-slide>
+            <swiper-slide><img src="/public/Marketplace1.png" alt="" /></swiper-slide><swiper-slide><img
+                src="/public/Marketplace2.png" alt="" /></swiper-slide>
+          </swiper>
+          <h2>Marketplace Pokémon</h2>
+          <p>
+            {{ $t("pProgetto") }}
+          </p>
+          <div class="icons-project">
+            <a href="https://github.com/gianlucanied/Pokemon-marketplace"><i class="fa-brands fa-github"></i></a>
+            <a href="https://marketplacepokemon.netlify.app/"><i class="fa-solid fa-globe"></i></a>
+          </div>
+        </div>
+
+        <div class="testimonial-item">
+          <swiper :effect="'cards'" :grabCursor="true" :modules="modules" class="mySwiper">
+            <swiper-slide><img src="/public/home-padel.png" alt="" /></swiper-slide>
+            <swiper-slide><img src="/public/about-padel.png" alt="" /></swiper-slide><swiper-slide><img
+                src="/public/contacts-padel.png" alt="" /></swiper-slide>
           </swiper>
           <h2>Padel Club Alghero</h2>
           <p>
             {{ $t("pProgetto1") }}
           </p>
           <div class="icons-project">
-            <a href="https://github.com/gianlucanied/pclub-project"
-              ><i class="fa-brands fa-github"></i
-            ></a>
-            <a href="https://padelalghero.com/"
-              ><i class="fa-solid fa-globe"></i
-            ></a>
+            <a href="https://github.com/gianlucanied/pclub-project"><i class="fa-brands fa-github"></i></a>
+            <a href="https://padelalghero.com/"><i class="fa-solid fa-globe"></i></a>
           </div>
         </div>
 
         <div class="testimonial-item">
-          <swiper
-            :effect="'cards'"
-            :grabCursor="true"
-            :modules="modules"
-            class="mySwiper"
-          >
-            <swiper-slide
-              ><img src="/public/Pokedex2.png" alt=""
-            /></swiper-slide>
-            <swiper-slide
-              ><img src="/public/pokedex1.png" alt="" /></swiper-slide
-            ><swiper-slide
-              ><img src="/public/pokedex3.png" alt=""
-            /></swiper-slide>
+          <swiper :effect="'cards'" :grabCursor="true" :modules="modules" class="mySwiper">
+            <swiper-slide><img src="/public/Pokedex2.png" alt="" /></swiper-slide>
+            <swiper-slide><img src="/public/pokedex1.png" alt="" /></swiper-slide><swiper-slide><img
+                src="/public/pokedex3.png" alt="" /></swiper-slide>
           </swiper>
           <h2>Pokèdex</h2>
           <p>
             {{ $t("pProgetto5") }}
           </p>
           <div class="icons-project">
-            <a href="https://github.com/gianlucanied/proj-html-vuejs"
-              ><i class="fa-brands fa-github"></i
-            ></a>
-            <a href="https://pokedexgnieddu.netlify.app/"
-              ><i class="fa-solid fa-globe"></i
-            ></a>
+            <a href="https://github.com/gianlucanied/proj-html-vuejs"><i class="fa-brands fa-github"></i></a>
+            <a href="https://pokedexgnieddu.netlify.app/"><i class="fa-solid fa-globe"></i></a>
           </div>
         </div>
         <div class="testimonial-item">
-          <swiper
-            :effect="'cards'"
-            :grabCursor="true"
-            :modules="modules"
-            class="mySwiper"
-          >
-            <swiper-slide
-              ><img src="/public/homepage-btrainer.png" alt=""
-            /></swiper-slide>
+          <swiper :effect="'cards'" :grabCursor="true" :modules="modules" class="mySwiper">
+            <swiper-slide><img src="/public/homepage-btrainer.png" alt="" /></swiper-slide>
             <swiper-slide>
-              <img src="/public/btrainer-2.png" alt="" /></swiper-slide
-            ><swiper-slide>
-              <img src="/public/btrainer3.png" alt=""
-            /></swiper-slide>
+              <img src="/public/btrainer-2.png" alt="" /></swiper-slide><swiper-slide>
+              <img src="/public/btrainer3.png" alt="" /></swiper-slide>
           </swiper>
           <h2>BTrainer</h2>
           <p>
             {{ $t("pProgetto2") }}
           </p>
           <div class="icons-project">
-            <a href="https://github.com/gianlucanied/BTrainer"
-              ><i class="fa-brands fa-github"></i
-            ></a>
+            <a href="https://github.com/gianlucanied/BTrainer"><i class="fa-brands fa-github"></i></a>
           </div>
         </div>
 
         <div class="testimonial-item">
-          <swiper
-            :effect="'cards'"
-            :grabCursor="true"
-            :modules="modules"
-            class="mySwiper"
-          >
-            <swiper-slide
-              ><img src="/public/hp-avada.png" alt=""
-            /></swiper-slide>
-            <swiper-slide
-              ><img src="/public/prices-avada.png" alt="" /></swiper-slide
-            ><swiper-slide
-              ><img src="/public/about-avada.png" alt=""
-            /></swiper-slide>
+          <swiper :effect="'cards'" :grabCursor="true" :modules="modules" class="mySwiper">
+            <swiper-slide><img src="/public/hp-avada.png" alt="" /></swiper-slide>
+            <swiper-slide><img src="/public/prices-avada.png" alt="" /></swiper-slide><swiper-slide><img
+                src="/public/about-avada.png" alt="" /></swiper-slide>
           </swiper>
           <h2>Avada Driving School</h2>
           <p>
             {{ $t("pProgetto3") }}
           </p>
           <div class="icons-project">
-            <a href="https://github.com/gianlucanied/proj-html-vuejs"
-              ><i class="fa-brands fa-github"></i
-            ></a>
+            <a href="https://github.com/gianlucanied/proj-html-vuejs"><i class="fa-brands fa-github"></i></a>
           </div>
         </div>
 
         <div class="testimonial-item">
-          <swiper
-            :effect="'cards'"
-            :grabCursor="true"
-            :modules="modules"
-            class="mySwiper"
-          >
-            <swiper-slide
-              ><img src="/public/Discord.png" alt=""
-            /></swiper-slide>
-            <swiper-slide><img src="/public/Spotify.png" alt="" /></swiper-slide
-            ><swiper-slide
-              ><img src="/public/Boolzapp.png" alt=""
-            /></swiper-slide>
-            <swiper-slide><img src="/public/Dropbox.png" alt="" /></swiper-slide
-            ><swiper-slide
-              ><img src="/public/Social Posts.png" alt=""
-            /></swiper-slide>
-            <swiper-slide
-              ><img src="/public/FizzBuzz.png" alt="" /></swiper-slide
-            ><swiper-slide
-              ><img src="/public/Biglietto treno.png" alt=""
-            /></swiper-slide>
+          <swiper :effect="'cards'" :grabCursor="true" :modules="modules" class="mySwiper">
+            <swiper-slide><img src="/public/Discord.png" alt="" /></swiper-slide>
+            <swiper-slide><img src="/public/Spotify.png" alt="" /></swiper-slide><swiper-slide><img
+                src="/public/Boolzapp.png" alt="" /></swiper-slide>
+            <swiper-slide><img src="/public/Dropbox.png" alt="" /></swiper-slide><swiper-slide><img
+                src="/public/Social Posts.png" alt="" /></swiper-slide>
+            <swiper-slide><img src="/public/FizzBuzz.png" alt="" /></swiper-slide><swiper-slide><img
+                src="/public/Biglietto treno.png" alt="" /></swiper-slide>
           </swiper>
           <h2>{{ $t("otherProjects") }}</h2>
 
@@ -233,9 +177,7 @@ export default {
             {{ $t("pProgetto4") }}
           </p>
           <div class="icons-project">
-            <a href="https://github.com/gianlucanied?tab=repositories"
-              ><i class="fa-brands fa-github"></i
-            ></a>
+            <a href="https://github.com/gianlucanied?tab=repositories"><i class="fa-brands fa-github"></i></a>
           </div>
         </div>
       </div>
@@ -293,6 +235,7 @@ export default {
 #app {
   height: 100%;
 }
+
 html,
 body {
   position: relative;
