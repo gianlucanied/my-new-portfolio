@@ -10,12 +10,11 @@ const messages = {
     projects: "Projects",
     contacts: "Contacts",
     testoPresentazione:
-      "💁🏻‍♂️ I am currently a Product Owner at <span><b>AirBanker</b></span>, a startup dedicated to financial consulting and education. In this role, I manage the design and implementation of the platform's key features, driving my commitment to effective digital solutions. As a Full Stack Developer, I combine my passion with solid skills in the tech industry, cultivated through an intensive program at the <span><b>Boolean Academy</b></span>, where I gained proficiency in the main Frontend and Backend development technologies. I also completed an academy with <span><b>ITconsulting</b></span>, where I strengthened my knowledge of Java SE and Java EE, focusing on Back-End development.",
-    pBackend:
-      "I have studied backend programming languages such as <b>PHP</b> and <b>Laravel</b>, delving into techniques to develop robust and scalable web applications. Additionally, I have gained skills in using <b>phpMyAdmin</b> for database management and administration, ensuring efficient and secure handling of information. I have also studied <b>Java SE</b> and <b>Java EE</b>, as well as <b>MySQL</b>, to further expand my skills in backend development and database management.",
+      " I currently work as a <span><b>Frontend Developer</b></span> at <span><b>Nuvyta</b></span>, an innovative company that develops a cloud-native clinical operating system for the healthcare sector. The platform, built on the <span><b>FHIR</b></span> data standard, helps hospitals and clinical structures digitize and optimize their care processes. I build and maintain the components and modules of the <span><b>NuPlatform</b></span> interface, working daily with Angular, TypeScript, and RxJS. I completed an intensive full stack development program at <span><b>Boolean Academy</b></span>, where I gained solid skills in modern frontend technologies.",
     pFrontend:
-      "I have studied frontend languages and technologies such as <b>HTML</b>, <b>CSS</b>, <b>JavaScript</b>, and <b>Vue.js</b>, delving into techniques for creating intuitive and responsive user interfaces. Additionally, I have gained skills in using <b>Bootstrap</b> to develop elegant and functional designs, ensuring an optimal user experience across various platforms and devices.",
-    pProgetto: "I created an innovative marketplace that, thanks to a powerful API call, allows you to instantly view the updated prices of Pokémon cards, easily searchable through the search bar. A unique experience for enthusiasts who want to stay always informed!",
+      "I work daily with <b>Angular</b> and <b>TypeScript</b> to build complex, scalable interfaces for a healthcare platform. I use <b>RxJS</b> for reactive data flows and state management, and <b>Lodash</b> for data manipulation. My background also includes <b>HTML</b>, <b>CSS</b>, <b>JavaScript</b>, <b>Vue.js</b>, <b>Bootstrap</b>, and <b>SASS</b>, allowing me to build intuitive and responsive user interfaces across different frameworks and contexts.",
+    pProgetto:
+      "I created an innovative marketplace that, thanks to a powerful API call, allows you to instantly view the updated prices of Pokémon cards, easily searchable through the search bar. A unique experience for enthusiasts who want to stay always informed!",
     pProgetto1:
       "I created a fully responsive showcase website entirely built with Vue.js. My goal was to provide an intuitive and straightforward experience for all visitors, whether on desktop or mobile devices.",
     pProgetto2:
@@ -36,12 +35,11 @@ const messages = {
     projects: "Miei Progetti",
     contacts: "Contatti",
     testoPresentazione:
-      "💁🏻‍♂️ Attualmente sono Product Owner per <span><b>AirBanker</b></span>, una startup dedicata alla consulenza e formazione finanziaria. In questo ruolo, gestisco la progettazione e implementazione delle funzionalità principali della piattaforma, portando avanti il mio impegno verso soluzioni digitali efficaci. Come Full Stack Developer, unisco passione e competenze solide nel settore tech, coltivate attraverso un percorso intensivo alla <span><b>Boolean Academy</b></span>, dove ho acquisito padronanza nelle principali tecnologie di sviluppo Frontend e Backend. Ho inoltre completato un’academy con <span><b>ITconsulting</b></span>, dove ho consolidato le mie conoscenze in Java SE e Java EE, con un focus sul Back-End. ",
-    pBackend:
-      "Ho studiato i linguaggi di programmazione backend <b>PHP</b> e <b>Laravel</b>, approfondendo le tecniche per sviluppare applicazioni web robuste e scalabili. Inoltre, ho acquisito competenze nell'uso di <b>phpMyAdmin</b> per la gestione e l'amministrazione dei database, garantendo una gestione efficiente e sicura delle informazioni. Ho anche studiato <b>Java SE</b> e <b>Java EE</b>, oltre a <b>MySQL</b>, per ampliare ulteriormente le mie competenze nello sviluppo backend e nella gestione dei database.",
+      " Lavoro attualmente come <span><b>Frontend Developer</b></span> presso <span><b>Nuvyta</b></span>, un'azienda innovativa che sviluppa un sistema operativo clinico cloud-native per il settore sanitario. La piattaforma, costruita sullo standard dati <span><b>FHIR</b></span>, aiuta ospedali e strutture cliniche a digitalizzare e ottimizzare i propri processi di cura. Mi occupo della costruzione e manutenzione dei componenti e dei moduli dell'interfaccia di <span><b>NuPlatform</b></span>, lavorando quotidianamente con Angular, TypeScript e RxJS. Ho completato un percorso intensivo di sviluppo full stack presso <span><b>Boolean Academy</b></span>, dove ho acquisito solide competenze nelle principali tecnologie frontend moderne.",
     pFrontend:
-      "Ho studiato i linguaggi e le tecnologie frontend <b>HTML</b>, <b>CSS</b>, <b>JavaScript</b>, e <b>Vue.js</b>, approfondendo le tecniche per creare interfacce utente intuitive e responsive. Inoltre, ho acquisito competenze nell'uso di <b>Bootstrap</b> per sviluppare design eleganti e funzionali, garantendo un'esperienza utente ottimale su diverse piattaforme e dispositivi. ",
-    pProgetto: "Ho creato un marketplace innovativo che, grazie a una potente chiamata API, consente di visualizzare istantaneamente i prezzi aggiornati delle carte dei Pokémon, facilmente ricercabili tramite la barra di ricerca. Un'esperienza unica per gli appassionati che vogliono rimanere sempre informati!",
+      "Lavoro quotidianamente con <b>Angular</b> e <b>TypeScript</b> per costruire interfacce complesse e scalabili per una piattaforma in ambito sanitario. Utilizzo <b>RxJS</b> per la gestione dei flussi di dati reattivi e <b>Lodash</b> per la manipolazione dei dati. Il mio background comprende anche <b>HTML</b>, <b>CSS</b>, <b>JavaScript</b>, <b>Vue.js</b>, <b>Bootstrap</b> e <b>SASS</b>, permettendomi di costruire interfacce utente intuitive e responsive in diversi framework e contesti.",
+    pProgetto:
+      "Ho creato un marketplace innovativo che, grazie a una potente chiamata API, consente di visualizzare istantaneamente i prezzi aggiornati delle carte dei Pokémon, facilmente ricercabili tramite la barra di ricerca. Un'esperienza unica per gli appassionati che vogliono rimanere sempre informati!",
     pProgetto1:
       "Ho creato un sito vetrina completamente responsive, realizzato interamente con Vue.js. Il mio obiettivo era quello di offrire un'esperienza intuitiva e semplice per tutti i visitatori, sia da desktop che da dispositivi mobili.",
     pProgetto2:
@@ -52,7 +50,6 @@ const messages = {
       "Tutti altri piccoli progetti creati da me, principalmente utilizzando HTML5, CSS e JavaScript.",
     pProgetto5:
       "Ho realizzato un Pokédex utilizzando JavaScript che effettua una chiamata API a PokeAPI per ottenere i dati dei Pokémon. Successivamente, ho implementato una barra di ricerca che permette di filtrare i Pokémon in base al nome, restituendo solo quelli che corrispondono al termine di ricerca inserito.",
-
     otherProjects: "Altri progetti",
   },
 };
