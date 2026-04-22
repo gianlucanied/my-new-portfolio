@@ -12,6 +12,11 @@ export default {
   },
   data() {
     return {
+      lightbox: {
+        open: false,
+        slides: [],
+        index: 0,
+      },
       skills: [
         { label: "Angular",    icon: "devicon-angularjs-plain",  color: "#ff4d4d", bg: "rgba(255,77,77,0.1)",   border: "rgba(255,77,77,0.35)" },
         { label: "TypeScript", icon: "devicon-typescript-plain", color: "#3b9eff", bg: "rgba(59,158,255,0.1)",  border: "rgba(59,158,255,0.35)" },
@@ -50,9 +55,9 @@ export default {
         },
       ],
       serviceKeys: [
-        { icon: "fa-solid fa-laptop-code",   titleKey: "service1Title", descKey: "service1Desc" },
-        { icon: "fa-solid fa-mobile-screen", titleKey: "service2Title", descKey: "service2Desc" },
-        { icon: "fa-solid fa-language",      titleKey: "service3Title", descKey: "service3Desc" },
+        { icon: "fa-solid fa-laptop-code",      titleKey: "service1Title", descKey: "service1Desc" },
+        { icon: "fa-solid fa-mobile-screen",    titleKey: "service2Title", descKey: "service2Desc" },
+        { icon: "fa-solid fa-language",         titleKey: "service3Title", descKey: "service3Desc" },
         { icon: "fa-solid fa-magnifying-glass", titleKey: "service4Title", descKey: "service4Desc" },
       ],
     };
@@ -68,6 +73,10 @@ export default {
   },
   mounted() {
     this.initParticles();
+    window.addEventListener("keydown", this.handleKey);
+  },
+  beforeUnmount() {
+    window.removeEventListener("keydown", this.handleKey);
   },
   methods: {
     initParticles() {
@@ -117,11 +126,68 @@ export default {
         canvas.height = canvas.offsetHeight;
       });
     },
+    openLightbox(slides, index = 0) {
+      this.lightbox.slides = slides;
+      this.lightbox.index = index;
+      this.lightbox.open = true;
+      document.body.style.overflow = "hidden";
+    },
+    closeLightbox() {
+      this.lightbox.open = false;
+      document.body.style.overflow = "";
+    },
+    lightboxNext() {
+      this.lightbox.index = (this.lightbox.index + 1) % this.lightbox.slides.length;
+    },
+    lightboxPrev() {
+      this.lightbox.index = (this.lightbox.index - 1 + this.lightbox.slides.length) % this.lightbox.slides.length;
+    },
+    handleKey(e) {
+      if (!this.lightbox.open) return;
+      if (e.key === "ArrowRight") this.lightboxNext();
+      if (e.key === "ArrowLeft") this.lightboxPrev();
+      if (e.key === "Escape") this.closeLightbox();
+    },
   },
 };
 </script>
 
 <template>
+
+  <!-- ── LIGHTBOX ── -->
+  <Teleport to="body">
+    <div v-if="lightbox.open" class="lightbox-overlay" @click.self="closeLightbox">
+      <button class="lightbox-close" @click="closeLightbox">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <button class="lightbox-arrow lightbox-arrow-left" @click="lightboxPrev">
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
+      <div class="lightbox-img-wrap">
+        <img
+          :src="`/${lightbox.slides[lightbox.index]}`"
+          :key="lightbox.index"
+          class="lightbox-img"
+          alt="preview"
+        />
+      </div>
+      <button class="lightbox-arrow lightbox-arrow-right" @click="lightboxNext">
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+      <div class="lightbox-counter">
+        {{ lightbox.index + 1 }} / {{ lightbox.slides.length }}
+      </div>
+      <div class="lightbox-dots">
+        <span
+          v-for="(_, i) in lightbox.slides"
+          :key="i"
+          class="lightbox-dot"
+          :class="{ active: i === lightbox.index }"
+          @click="lightbox.index = i"
+        ></span>
+      </div>
+    </div>
+  </Teleport>
 
   <!-- ── HERO ── -->
   <section class="home" id="home">
@@ -162,8 +228,15 @@ export default {
       <div v-for="p in clientProjects" :key="p.titleKey" class="client-card">
         <div class="client-card-top">
           <swiper :effect="'cards'" :grabCursor="true" :modules="modules" class="mySwiper">
-            <swiper-slide v-for="slide in p.slides" :key="slide">
-              <img :src="`/${slide}`" :alt="$t(p.titleKey)" />
+            <swiper-slide v-for="(slide, i) in p.slides" :key="slide">
+              <img
+                :src="`/${slide}`"
+                :alt="$t(p.titleKey)"
+                @click="openLightbox(p.slides, i)"
+              />
+              <div class="slide-zoom-hint">
+                <i class="fa-solid fa-magnifying-glass-plus"></i>
+              </div>
             </swiper-slide>
           </swiper>
         </div>
@@ -172,7 +245,11 @@ export default {
           <h3>{{ $t(p.titleKey) }}</h3>
           <p>{{ $t(p.descKey) }}</p>
           <div class="project-tags">
-            <span v-for="tag in $t(p.tagsKey).split(',')" :key="tag" class="tag">{{ tag }}</span>
+            <span
+              v-for="tag in $t(p.tagsKey).split(',').map(t => t.trim())"
+              :key="tag"
+              class="tag"
+            >{{ tag }}</span>
           </div>
           <div class="client-links">
             <a v-if="p.live" :href="p.live" target="_blank" class="btn btn-sm">
@@ -264,6 +341,141 @@ export default {
 </template>
 
 <style scoped>
+/* ── LIGHTBOX ── */
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.92);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: lb-fade 0.2s ease;
+}
+
+@keyframes lb-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.lightbox-img-wrap {
+  max-width: 85vw;
+  max-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox-img {
+  max-width: 100%;
+  max-height: 80vh;
+  border-radius: 12px;
+  box-shadow: 0 0 60px rgba(0,0,0,0.8), 0 0 0 1px rgba(255,140,0,0.2);
+  animation: lb-zoom 0.2s ease;
+  object-fit: contain;
+}
+
+@keyframes lb-zoom {
+  from { transform: scale(0.92); opacity: 0; }
+  to   { transform: scale(1);    opacity: 1; }
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 2rem; right: 2rem;
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: rgba(255,140,0,0.15);
+  border: 1px solid rgba(255,140,0,0.3);
+  color: var(--main-color);
+  font-size: 1.8rem;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: 0.2s ease;
+  z-index: 2;
+}
+
+.lightbox-close:hover {
+  background: rgba(255,140,0,0.3);
+  transform: scale(1.1);
+}
+
+.lightbox-arrow {
+  position: absolute;
+  top: 50%; transform: translateY(-50%);
+  width: 50px; height: 50px;
+  border-radius: 50%;
+  background: rgba(255,140,0,0.15);
+  border: 1px solid rgba(255,140,0,0.3);
+  color: var(--main-color);
+  font-size: 1.8rem;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: 0.2s ease;
+  z-index: 2;
+}
+
+.lightbox-arrow:hover {
+  background: rgba(255,140,0,0.35);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.lightbox-arrow-left  { left: 2rem; }
+.lightbox-arrow-right { right: 2rem; }
+
+.lightbox-counter {
+  position: absolute;
+  bottom: 5rem;
+  left: 50%; transform: translateX(-50%);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 0.1em;
+}
+
+.lightbox-dots {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%; transform: translateX(-50%);
+  display: flex; gap: 8px;
+}
+
+.lightbox-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.25);
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.lightbox-dot.active {
+  background: var(--main-color);
+  transform: scale(1.3);
+}
+
+/* ── SLIDE ZOOM HINT ── */
+.swiper-slide {
+  position: relative;
+  cursor: zoom-in;
+}
+
+.slide-zoom-hint {
+  position: absolute;
+  bottom: 8px; right: 8px;
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.6);
+  border: 1px solid rgba(255,140,0,0.4);
+  color: var(--main-color);
+  font-size: 12px;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0;
+  transition: 0.2s ease;
+  pointer-events: none;
+}
+
+.swiper-slide:hover .slide-zoom-hint { opacity: 1; }
+
 /* ── PARTICLES ── */
 .particles-canvas {
   position: absolute;
@@ -316,7 +528,6 @@ export default {
   padding: 6px 14px;
   border-radius: 20px;
 }
-
 .hero-badge i { color: var(--main-color); font-size: 11px; }
 
 /* ── SERVIZI ── */
@@ -347,32 +558,12 @@ export default {
   transition: 0.3s ease;
 }
 
-.service-card:hover {
-  border-color: rgba(255, 140, 0, 0.4);
-  background: rgba(255, 140, 0, 0.03);
-  transform: translateY(-4px);
-}
-
+.service-card:hover { border-color: rgba(255,140,0,0.4); background: rgba(255,140,0,0.03); transform: translateY(-4px); }
 .service-card:hover::before { opacity: 1; }
 
-.service-card-icon {
-  font-size: 3rem;
-  color: var(--main-color);
-  margin-bottom: 1.8rem;
-}
-
-.service-card h4 {
-  font-size: 2rem;
-  font-weight: 800;
-  color: var(--text-color);
-  margin-bottom: 1rem;
-}
-
-.service-card p {
-  font-size: 1.4rem;
-  color: rgba(230, 237, 243, 0.6);
-  line-height: 1.7;
-}
+.service-card-icon { font-size: 3rem; color: var(--main-color); margin-bottom: 1.8rem; }
+.service-card h4 { font-size: 2rem; font-weight: 800; color: var(--text-color); margin-bottom: 1rem; }
+.service-card p { font-size: 1.4rem; color: rgba(230,237,243,0.6); line-height: 1.7; }
 
 /* ── SECTION TAG ── */
 .section-tag {
@@ -392,7 +583,7 @@ export default {
 
 .client-card {
   background: var(--bg-color);
-  border: 1px solid rgba(255, 140, 0, 0.12);
+  border: 1px solid rgba(255,140,0,0.12);
   border-radius: 14px;
   overflow: hidden;
   transition: 0.4s ease;
@@ -401,7 +592,7 @@ export default {
 }
 
 .client-card:hover {
-  border-color: rgba(255, 140, 0, 0.4);
+  border-color: rgba(255,140,0,0.4);
   transform: translateY(-6px);
   box-shadow: 0 20px 40px rgba(0,0,0,0.3), 0 0 20px rgba(255,140,0,0.08);
 }
@@ -414,119 +605,68 @@ export default {
 
 .client-card-body {
   padding: 2rem 2.5rem 2.5rem;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  gap: 1rem;
+  display: flex; flex-direction: column; flex: 1; gap: 1rem;
 }
 
-.client-type {
-  font-size: 1.1rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--main-color);
-}
+.client-type { font-size: 1.1rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--main-color); }
+.client-card-body h3 { font-size: 2.2rem; font-weight: 800; color: var(--text-color); }
+.client-card-body p { font-size: 1.3rem; color: rgba(230,237,243,0.6); line-height: 1.7; flex: 1; }
 
-.client-card-body h3 {
-  font-size: 2.2rem;
-  font-weight: 800;
-  color: var(--text-color);
-}
-
-.client-card-body p {
-  font-size: 1.3rem;
-  color: rgba(230, 237, 243, 0.6);
-  line-height: 1.7;
-  flex: 1;
-}
-
-.client-links {
-  display: flex;
-  gap: 1rem;
-  margin-top: 0.5rem;
-  flex-wrap: wrap;
-}
+.client-links { display: flex; gap: 1rem; margin-top: 0.5rem; flex-wrap: wrap; }
 
 .btn-sm {
-  padding: 0.7rem 1.6rem;
-  font-size: 1.2rem;
-  border-radius: 4px;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
+  padding: 0.7rem 1.6rem; font-size: 1.2rem; border-radius: 4px;
+  display: inline-flex; align-items: center; gap: 6px;
 }
 
 .btn-ghost-sm {
-  background: transparent;
-  color: var(--main-color);
-  border: 1px solid rgba(255, 140, 0, 0.4);
-  box-shadow: none;
+  background: transparent; color: var(--main-color);
+  border: 1px solid rgba(255,140,0,0.4); box-shadow: none;
 }
-
-.btn-ghost-sm:hover { background: rgba(255, 140, 0, 0.08); }
+.btn-ghost-sm:hover { background: rgba(255,140,0,0.08); }
 
 /* ── CHI SONO ── */
 .about-inner {
   display: flex;
   flex-direction: column;
   gap: 5rem;
-  align-items: flex-start; /* testo allineato a sinistra */
+  align-items: flex-start;
   max-width: 900px;
   margin: 0 auto;
   width: 100%;
 }
 
-.about-skills {
-  width: 100%; /* forza il nastro a stare dentro il contenitore */
-}
-
-.about-title {
-  font-size: 5rem;
-  font-weight: 800;
-  color: var(--text-color);
-  margin: 1rem 0 2.5rem;
-  line-height: 1.1;
-}
+.about-title { font-size: 5rem; font-weight: 800; color: var(--text-color); margin: 1rem 0 2.5rem; line-height: 1.1; }
 
 .about-title span {
   background: linear-gradient(90deg, var(--main-color), #ffcc00);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
 }
 
-.about-text p {
-  font-size: 1.6rem;
-  color: rgba(230, 237, 243, 0.65);
-  line-height: 1.9;
-  margin-bottom: 2rem;
-}
-
+.about-text p { font-size: 1.6rem; color: rgba(230,237,243,0.65); line-height: 1.9; margin-bottom: 2rem; }
 .about-text strong { color: var(--text-color); font-weight: 700; }
 .about-cta { margin-top: 3rem; }
 
+.about-skills { width: 100%; }
+
 /* ── NASTRO COMPETENZE ── */
 .conveyor {
-  position: relative;
-  overflow: hidden;
+  position: relative; overflow: hidden;
   background: var(--second-bg-color);
-  border-top: 1px solid rgba(255, 140, 0, 0.2);
-  border-bottom: 1px solid rgba(255, 140, 0, 0.2);
+  border-top: 1px solid rgba(255,140,0,0.2);
+  border-bottom: 1px solid rgba(255,140,0,0.2);
   padding: 16px 0;
 }
 
 .conveyor::before {
-  content: '';
-  position: absolute;
+  content: ''; position: absolute;
   left: 0; top: 0; bottom: 0; width: 80px;
   background: linear-gradient(90deg, var(--second-bg-color), transparent);
   z-index: 2; pointer-events: none;
 }
 
 .conveyor::after {
-  content: '';
-  position: absolute;
+  content: ''; position: absolute;
   right: 0; top: 0; bottom: 0; width: 80px;
   background: linear-gradient(270deg, var(--second-bg-color), transparent);
   z-index: 2; pointer-events: none;
@@ -534,26 +674,13 @@ export default {
 
 .conveyor-reverse { margin-top: 2px; border-top: none; }
 
-.track {
-  display: flex; gap: 16px; width: max-content;
-  animation: scroll-right 30s linear infinite;
-}
+.track { display: flex; gap: 16px; width: max-content; animation: scroll-right 30s linear infinite; }
 .track:hover { animation-play-state: paused; }
-
-.track-reverse {
-  display: flex; gap: 16px; width: max-content;
-  animation: scroll-left 36s linear infinite;
-}
+.track-reverse { display: flex; gap: 16px; width: max-content; animation: scroll-left 36s linear infinite; }
 .track-reverse:hover { animation-play-state: paused; }
 
-@keyframes scroll-right {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-@keyframes scroll-left {
-  0%   { transform: translateX(-50%); }
-  100% { transform: translateX(0); }
-}
+@keyframes scroll-right { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+@keyframes scroll-left  { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
 
 .skill-chip {
   display: flex; align-items: center; gap: 8px;
@@ -563,7 +690,6 @@ export default {
 }
 .skill-chip:hover { transform: scale(1.08) translateY(-2px); }
 .skill-chip i { font-size: 20px; }
-
 .chip-name { font-size: 12px; font-weight: 700; letter-spacing: 0.04em; }
 
 /* ── SWIPER ── */
@@ -576,20 +702,26 @@ export default {
 
 .swiper-slide img { width: 100%; height: 100%; object-fit: cover; }
 
+/* ── TAGS ── */
+.project-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 0.5rem; }
+
+.tag {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.06em;
+  padding: 4px 12px; border-radius: 20px;
+  background: rgba(255,140,0,0.1); color: var(--main-color);
+  border: 1px solid rgba(255,140,0,0.25); white-space: nowrap;
+}
+
 /* ── CONTATTI ── */
 .contacts {
-  min-height: 60vh;
-  background: var(--second-bg-color);
+  min-height: 60vh; background: var(--second-bg-color);
   display: flex; align-items: center; justify-content: center;
-  padding: 10rem 12%;
-  position: relative; overflow: hidden;
+  padding: 10rem 12%; position: relative; overflow: hidden;
 }
 
 .contacts::before {
-  content: '';
-  position: absolute;
-  top: -200px; left: 50%;
-  transform: translateX(-50%);
+  content: ''; position: absolute;
+  top: -200px; left: 50%; transform: translateX(-50%);
   width: 600px; height: 600px;
   background: radial-gradient(circle, rgba(255,140,0,0.06) 0%, transparent 65%);
   border-radius: 50%; pointer-events: none;
@@ -600,25 +732,16 @@ export default {
   text-align: center; position: relative; z-index: 1; max-width: 700px;
 }
 
-.contacts-tag {
-  font-size: 1.2rem; letter-spacing: 0.22em; text-transform: uppercase;
-  color: rgba(255, 140, 0, 0.55); margin-bottom: 2rem;
-}
+.contacts-tag { font-size: 1.2rem; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,140,0,0.55); margin-bottom: 2rem; }
 
-.contacts-title {
-  font-size: 6.5rem; font-weight: 800; color: var(--text-color);
-  line-height: 1.15; margin-bottom: 2rem; letter-spacing: -0.02em;
-}
+.contacts-title { font-size: 6.5rem; font-weight: 800; color: var(--text-color); line-height: 1.15; margin-bottom: 2rem; letter-spacing: -0.02em; }
 
 .contacts-title span {
   background: linear-gradient(90deg, var(--main-color), #ffcc00);
   -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
 }
 
-.contacts-sub {
-  font-size: 1.6rem; color: rgba(230, 237, 243, 0.6);
-  line-height: 1.8; margin-bottom: 4rem; max-width: 500px;
-}
+.contacts-sub { font-size: 1.6rem; color: rgba(230,237,243,0.6); line-height: 1.8; margin-bottom: 4rem; max-width: 500px; }
 
 .contacts-email {
   display: inline-flex; align-items: center; gap: 1.2rem;
@@ -627,11 +750,7 @@ export default {
   padding-bottom: 4px; transition: 0.3s ease; margin-bottom: 5rem;
 }
 
-.contacts-email:hover {
-  border-bottom-color: var(--main-color);
-  text-shadow: 0 0 20px rgba(255,140,0,0.4);
-  gap: 1.8rem;
-}
+.contacts-email:hover { border-bottom-color: var(--main-color); text-shadow: 0 0 20px rgba(255,140,0,0.4); gap: 1.8rem; }
 
 .contacts-socials { display: flex; gap: 3rem; margin-bottom: 6rem; }
 
@@ -648,30 +767,21 @@ export default {
 }
 
 .contacts-social-link:hover { color: var(--main-color); }
+.contacts-social-link:hover i { border-color: var(--main-color); background: rgba(255,140,0,0.08); box-shadow: 0 0 16px rgba(255,140,0,0.3); transform: translateY(-4px); }
 
-.contacts-social-link:hover i {
-  border-color: var(--main-color);
-  background: rgba(255,140,0,0.08);
-  box-shadow: 0 0 16px rgba(255,140,0,0.3);
-  transform: translateY(-4px);
-}
-
-.contacts-footer {
-  font-size: 1.2rem; color: rgba(230,237,243,0.25); letter-spacing: 0.05em;
-  border-top: 1px solid rgba(255,140,0,0.08); padding-top: 3rem;
-  width: 100%; text-align: center;
-}
+.contacts-footer { font-size: 1.2rem; color: rgba(230,237,243,0.25); letter-spacing: 0.05em; border-top: 1px solid rgba(255,140,0,0.08); padding-top: 3rem; width: 100%; text-align: center; }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 991px) {
   .services-grid { grid-template-columns: 1fr; }
   .clienti-grid { grid-template-columns: 1fr; }
-  .about-inner { grid-template-columns: 1fr; gap: 5rem; }
 }
 
 @media (max-width: 600px) {
   .contacts-title { font-size: 4.5rem; }
   .contacts-email { font-size: 1.5rem; word-break: break-all; }
   .hero-badge-row { flex-direction: column; }
+  .lightbox-arrow-left  { left: 0.5rem; }
+  .lightbox-arrow-right { right: 0.5rem; }
 }
 </style>
