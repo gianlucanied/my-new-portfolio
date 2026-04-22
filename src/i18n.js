@@ -11,7 +11,7 @@ const messages = {
     contacts: "Contacts",
 
     heroSubtitle: "// Freelance Web Developer · Alghero",
-    heroTitle: "I create websites\nfor your business",
+    heroTitle: "I create websites<br>for your <span>business</span>", 
     heroDesc: "I build modern, fast, search-engine-optimized showcase websites for local businesses. From restaurants to gyms, from shops to hotels.",
     heroBadge1: "Frontend Developer @ Nuvyta",
     heroBadge2: "3+ satisfied clients",
@@ -53,7 +53,7 @@ const messages = {
     stackTag: "// Tech stack",
 
     contactsTag: "// Contacts",
-    contactsTitle: "Got a business?\nLet's talk.",
+    contactsTitle: "Got a business?<br><span>Let's talk.</span>",
     contactsSub: "I build showcase websites for local businesses in Alghero and across Sardinia. Contact me for a free quote.",
 
     pFrontend: "I work daily with <b>Angular</b> and <b>TypeScript</b> to build complex, scalable interfaces for a healthcare platform. I use <b>RxJS</b> for reactive data flows and <b>Lodash</b> for data manipulation. My background also includes <b>HTML</b>, <b>CSS</b>, <b>JavaScript</b>, <b>Vue.js</b>, <b>Bootstrap</b>, and <b>SASS</b>.",
@@ -67,7 +67,7 @@ const messages = {
     contacts: "Contatti",
 
     heroSubtitle: "// Web Developer Freelance · Alghero",
-    heroTitle: "Creo siti web\nper la tua attività",
+    heroTitle: "Creo siti web<br>per la tua <span>attività</span>",
     heroDesc: "Realizzo siti vetrina moderni, veloci e ottimizzati per le attività locali. Dal ristorante alla palestra, dal negozio all'hotel.",
     heroBadge1: "Frontend Developer @ Nuvyta",
     heroBadge2: "3+ clienti soddisfatti",
@@ -109,7 +109,7 @@ const messages = {
     stackTag: "// Stack tecnico",
 
     contactsTag: "// Contatti",
-    contactsTitle: "Hai un'attività?\nParliamone.",
+    contactsTitle: "Hai un'attività?<br><span>Parliamone.</span>",
     contactsSub: "Realizzo siti vetrina per attività locali ad Alghero e in tutta la Sardegna. Contattami per un preventivo gratuito.",
 
     pFrontend: "Lavoro quotidianamente con <b>Angular</b> e <b>TypeScript</b> per costruire interfacce complesse e scalabili per una piattaforma in ambito sanitario. Utilizzo <b>RxJS</b> per la gestione dei flussi di dati reattivi e <b>Lodash</b> per la manipolazione dei dati. Il mio background comprende anche <b>HTML</b>, <b>CSS</b>, <b>JavaScript</b>, <b>Vue.js</b>, <b>Bootstrap</b> e <b>SASS</b>.",

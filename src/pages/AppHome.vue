@@ -270,7 +270,7 @@ export default {
     <canvas ref="particles" class="particles-canvas"></canvas>
     <div class="home-content">
       <div class="home-subtitle">{{ $t("heroSubtitle") }}</div>
-      <h1 v-html="$t('heroTitle').replace('\n', '<br>')"></h1>
+      <h1 v-html="$t('heroTitle')"></h1>
       <p class="hero-desc">{{ $t("heroDesc") }}</p>
       <div class="btn-group">
         <a href="#clienti" class="btn">{{ $t("clientiTitle") }}</a>
@@ -411,10 +411,7 @@ export default {
   <section class="contacts" id="contacts" data-aos="fade-up">
     <div class="contacts-inner">
       <div class="contacts-tag">{{ $t("contactsTag") }}</div>
-      <h2
-        class="contacts-title"
-        v-html="$t('contactsTitle').replace('\n', '<br>')"
-      ></h2>
+      <h2 class="contacts-title" v-html="$t('contactsTitle')"></h2>
       <p class="contacts-sub">{{ $t("contactsSub") }}</p>
       <a href="mailto:gianluca.nieddu96@gmail.com" class="contacts-email">
         gianluca.nieddu96@gmail.com
