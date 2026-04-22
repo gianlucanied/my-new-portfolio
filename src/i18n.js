@@ -10,10 +10,11 @@ const messages = {
     projects: "Projects",
     contacts: "Contacts",
 
-    heroSubtitle: "// Freelance Web Developer · Alghero",
-    heroTitle: "I create websites<br>for your <span>business</span>", 
+    heroSubtitle: "// Freelance Web Developer - Alghero",
+    heroTitle: "I create websites for your",
+    heroTitleSpan: "business",
     heroDesc: "I build modern, fast, search-engine-optimized showcase websites for local businesses. From restaurants to gyms, from shops to hotels.",
-    heroBadge1: "Frontend Developer @ Nuvyta",
+    heroBadge1: "Frontend Developer at Nuvyta",
     heroBadge2: "3+ satisfied clients",
     heroBadge3: "Multilingual websites",
 
@@ -47,16 +48,17 @@ const messages = {
     viewCode: "Code",
 
     aboutTag: "// About me",
-    aboutText1: "I am a <strong>Frontend Developer</strong> from Alghero, Sardinia. By day I work at <strong>Nuvyta</strong>, a company that develops cloud-native platforms for the healthcare sector — where I build complex interfaces with Angular, TypeScript and RxJS.",
-    aboutText2: "In my spare time I help <strong>local businesses</strong> build a professional online presence with fast, SEO-optimized showcase websites.",
-    aboutCta: "Let's talk about your project",
+    aboutText1: "I am a Frontend Developer from Alghero, Sardinia. By day I work at Nuvyta, a company that develops cloud-native platforms for the healthcare sector, where I build complex interfaces with Angular, TypeScript and RxJS.",
+    aboutText2: "In my spare time I help local businesses build a professional online presence with fast, SEO-optimized showcase websites.",
+    aboutCta: "Talk about your project",
     stackTag: "// Tech stack",
 
     contactsTag: "// Contacts",
-    contactsTitle: "Got a business?<br><span>Let's talk.</span>",
+    contactsTitle: "Got a business?",
+    contactsTitleSpan: "Let's talk.",
     contactsSub: "I build showcase websites for local businesses in Alghero and across Sardinia. Contact me for a free quote.",
 
-    pFrontend: "I work daily with <b>Angular</b> and <b>TypeScript</b> to build complex, scalable interfaces for a healthcare platform. I use <b>RxJS</b> for reactive data flows and <b>Lodash</b> for data manipulation. My background also includes <b>HTML</b>, <b>CSS</b>, <b>JavaScript</b>, <b>Vue.js</b>, <b>Bootstrap</b>, and <b>SASS</b>.",
+    pFrontend: "I work daily with Angular and TypeScript to build complex, scalable interfaces for a healthcare platform. I use RxJS for reactive data flows and Lodash for data manipulation. My background also includes HTML, CSS, JavaScript, Vue.js, Bootstrap, and SASS.",
   },
   it: {
     welcome: "Benvenuto",
@@ -66,22 +68,23 @@ const messages = {
     projects: "Progetti",
     contacts: "Contatti",
 
-    heroSubtitle: "// Web Developer Freelance · Alghero",
-    heroTitle: "Creo siti web<br>per la tua <span>attività</span>",
-    heroDesc: "Realizzo siti vetrina moderni, veloci e ottimizzati per le attività locali. Dal ristorante alla palestra, dal negozio all'hotel.",
-    heroBadge1: "Frontend Developer @ Nuvyta",
+    heroSubtitle: "// Web Developer Freelance - Alghero",
+    heroTitle: "Creo siti web per la tua",
+    heroTitleSpan: "attivita'",
+    heroDesc: "Realizzo siti vetrina moderni, veloci e ottimizzati per le attivita' locali. Dal ristorante alla palestra, dal negozio all'hotel.",
+    heroBadge1: "Frontend Developer at Nuvyta",
     heroBadge2: "3+ clienti soddisfatti",
     heroBadge3: "Siti multilingue",
 
     servicesTitle: "Cosa posso fare per te",
     service1Title: "Sito Vetrina",
-    service1Desc: "Presenti la tua attività online con un sito professionale, veloce e ottimizzato per i motori di ricerca.",
+    service1Desc: "Presenti la tua attivita' online con un sito professionale, veloce e ottimizzato per i motori di ricerca.",
     service2Title: "Design Responsive",
     service2Desc: "Il tuo sito si adatta perfettamente a smartphone, tablet e desktop. I tuoi clienti ti trovano ovunque.",
     service3Title: "Sito Multilingue",
     service3Desc: "Raggiungi clienti in tutto il mondo con un sito disponibile in italiano, inglese e spagnolo.",
-    service4Title: "SEO & Visibilità",
-    service4Desc: "Ottimizzazione per i motori di ricerca per far trovare la tua attività su Google dai clienti giusti.",
+    service4Title: "SEO e Visibilita'",
+    service4Desc: "Ottimizzazione per i motori di ricerca per far trovare la tua attivita' su Google dai clienti giusti.",
 
     clientiTag: "// Lavori per clienti",
     clientiTitle: "Siti realizzati",
@@ -103,21 +106,23 @@ const messages = {
     viewCode: "Codice",
 
     aboutTag: "// Chi sono",
-    aboutText1: "Sono un <strong>Frontend Developer</strong> di Alghero, Sardegna. Di giorno lavoro in <strong>Nuvyta</strong>, un'azienda che sviluppa piattaforme cloud-native per il settore sanitario — dove costruisco interfacce complesse con Angular, TypeScript e RxJS.",
-    aboutText2: "Nel tempo libero aiuto le <strong>attività locali</strong> a essere presenti online con siti vetrina professionali, veloci e ottimizzati per i motori di ricerca.",
+    aboutText1: "Sono un Frontend Developer di Alghero, Sardegna. Di giorno lavoro in Nuvyta, un'azienda che sviluppa piattaforme cloud-native per il settore sanitario, dove costruisco interfacce complesse con Angular, TypeScript e RxJS.",
+    aboutText2: "Nel tempo libero aiuto le attivita' locali a essere presenti online con siti vetrina professionali, veloci e ottimizzati per i motori di ricerca.",
     aboutCta: "Parliamo del tuo progetto",
     stackTag: "// Stack tecnico",
 
     contactsTag: "// Contatti",
-    contactsTitle: "Hai un'attività?<br><span>Parliamone.</span>",
-    contactsSub: "Realizzo siti vetrina per attività locali ad Alghero e in tutta la Sardegna. Contattami per un preventivo gratuito.",
+    contactsTitle: "Hai un'attivita'?",
+    contactsTitleSpan: "Parliamone.",
+    contactsSub: "Realizzo siti vetrina per attivita' locali ad Alghero e in tutta la Sardegna. Contattami per un preventivo gratuito.",
 
-    pFrontend: "Lavoro quotidianamente con <b>Angular</b> e <b>TypeScript</b> per costruire interfacce complesse e scalabili per una piattaforma in ambito sanitario. Utilizzo <b>RxJS</b> per la gestione dei flussi di dati reattivi e <b>Lodash</b> per la manipolazione dei dati. Il mio background comprende anche <b>HTML</b>, <b>CSS</b>, <b>JavaScript</b>, <b>Vue.js</b>, <b>Bootstrap</b> e <b>SASS</b>.",
+    pFrontend: "Lavoro quotidianamente con Angular e TypeScript per costruire interfacce complesse e scalabili per una piattaforma in ambito sanitario. Utilizzo RxJS per la gestione dei flussi di dati reattivi e Lodash per la manipolazione dei dati. Il mio background comprende anche HTML, CSS, JavaScript, Vue.js, Bootstrap e SASS.",
   },
 };
 
 const i18n = createI18n({
   locale: "it",
+  legacy: false,
   messages,
   warnHtmlMessage: false,
   missingWarn: false,
