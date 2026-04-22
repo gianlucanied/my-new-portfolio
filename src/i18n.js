@@ -119,6 +119,9 @@ const messages = {
 const i18n = createI18n({
   locale: "it",
   messages,
+  warnHtmlMessage: false,
+  missingWarn: false,
+  fallbackWarn: false,
 });
 
 export default i18n;
