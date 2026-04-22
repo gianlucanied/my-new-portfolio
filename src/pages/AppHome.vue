@@ -178,7 +178,7 @@ export default {
         <span class="corner tr"></span>
         <span class="corner bl"></span>
         <span class="corner br"></span>
-        <img src="/public/IMG_5576.jpg" alt="profile-photo" />
+        <img src="/IMG_5576.jpg" alt="profile-photo" />
       </div>
     </div>
   </section>
@@ -247,7 +247,7 @@ export default {
 
           <swiper :effect="'cards'" :grabCursor="true" :modules="modules" class="mySwiper">
             <swiper-slide v-for="slide in project.slides" :key="slide">
-              <img :src="`/public/${slide}`" :alt="project.title" />
+              <img :src="`/${slide}`" :alt="project.title" />
             </swiper-slide>
           </swiper>
 
