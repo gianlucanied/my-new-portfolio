@@ -498,38 +498,6 @@ export default {
         gianluca.nieddu96@gmail.com
         <i class="fa-solid fa-arrow-right"></i>
       </a>
-      <div class="contacts-socials">
-        <a
-          href="https://www.linkedin.com/in/gianluca-nieddu-8149a3236/"
-          target="_blank"
-          class="contacts-social-link"
-        >
-          <i class="fa-brands fa-linkedin"></i>
-          <span>LinkedIn</span>
-        </a>
-        <a
-          href="https://github.com/gianlucanied"
-          target="_blank"
-          class="contacts-social-link"
-        >
-          <i class="fa-brands fa-github"></i>
-          <span>GitHub</span>
-        </a>
-        <a
-          href="https://www.instagram.com/gianlucanied/"
-          target="_blank"
-          class="contacts-social-link"
-        >
-          <i class="fa-brands fa-instagram"></i>
-          <span>Instagram</span>
-        </a>
-      </div>
-      <div class="contacts-footer">
-        <span
-          >© {{ new Date().getFullYear() }} Gianluca Nieddu — Built with
-          Vue.js</span
-        >
-      </div>
     </div>
   </section>
 
@@ -538,7 +506,6 @@ export default {
     <div class="about-inner">
       <div class="about-text">
         <div class="section-tag">{{ $t("aboutTag") }}</div>
-        <h2 class="about-title">Gianluca <span>Nieddu</span></h2>
         <p v-html="$t('aboutText1')"></p>
         <p v-html="$t('aboutText2')"></p>
         <div class="about-cta">
@@ -577,6 +544,38 @@ export default {
             </div>
           </div>
         </div>
+              <div class="contacts-socials">
+        <a
+          href="https://www.linkedin.com/in/gianluca-nieddu-8149a3236/"
+          target="_blank"
+          class="contacts-social-link"
+        >
+          <i class="fa-brands fa-linkedin"></i>
+          <span>LinkedIn</span>
+        </a>
+        <a
+          href="https://github.com/gianlucanied"
+          target="_blank"
+          class="contacts-social-link"
+        >
+          <i class="fa-brands fa-github"></i>
+          <span>GitHub</span>
+        </a>
+        <a
+          href="https://www.instagram.com/gianlucanied/"
+          target="_blank"
+          class="contacts-social-link"
+        >
+          <i class="fa-brands fa-instagram"></i>
+          <span>Instagram</span>
+        </a>
+      </div>
+      <div class="contacts-footer">
+        <span
+          >© {{ new Date().getFullYear() }} Gianluca Nieddu — Built with
+          Vue.js</span
+        >
+      </div>
       </div>
     </div>
   </section>
@@ -1288,8 +1287,10 @@ export default {
 
 .contacts-socials {
   display: flex;
+  justify-content: center;
   gap: 3rem;
-  margin-bottom: 6rem;
+  margin-top: 5rem;
+  margin-bottom: 3rem;
 }
 
 .contacts-social-link {

@@ -236,6 +236,8 @@ section {
 @media (max-width: 895px) {
   #menu-icon { display: block; }
 
+  .logo { font-size: 2rem; white-space: nowrap; }
+
   .navbar {
     position: absolute;
     top: 100%; right: 0;

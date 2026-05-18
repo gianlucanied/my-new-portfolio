@@ -9,6 +9,7 @@ const messages = {
     services: "Services",
     projects: "Projects",
     contacts: "Contacts",
+    about: "About",
 
     heroSubtitle: "// Freelance Web Developer - Alghero",
     heroTitle: "I create websites for your",
@@ -67,6 +68,7 @@ const messages = {
     services: "Servizi",
     projects: "Progetti",
     contacts: "Contatti",
+    about: "Chi Sono",
 
     heroSubtitle: "// Web Developer Freelance - Alghero",
     heroTitle: "Creo siti web per la tua",
