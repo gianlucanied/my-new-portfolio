@@ -14,7 +14,7 @@ const messages = {
     heroTitle: "I create websites for your",
     heroTitleSpan: "business",
     heroDesc: "I build modern, fast, search-engine-optimized showcase websites for local businesses. From restaurants to gyms, from shops to hotels.",
-    heroBadge1: "Frontend Developer at Nuvyta",
+    heroBadge1: "Frontend Developer",
     heroBadge2: "3+ satisfied clients",
     heroBadge3: "Multilingual websites",
 
@@ -48,7 +48,7 @@ const messages = {
     viewCode: "Code",
 
     aboutTag: "// About me",
-    aboutText1: "I am a Frontend Developer from Alghero, Sardinia. By day I work at Nuvyta, a company that develops cloud-native platforms for the healthcare sector, where I build complex interfaces with Angular, TypeScript and RxJS.",
+    aboutText1: "I am a Frontend Developer from Alghero, Sardinia. By day I work at a company that develops cloud-native platforms for the healthcare sector, where I build interfaces with Angular, TypeScript and RxJS.",
     aboutText2: "In my spare time I help local businesses build a professional online presence with fast, SEO-optimized showcase websites.",
     aboutCta: "Talk about your project",
     stackTag: "// Tech stack",
@@ -72,7 +72,7 @@ const messages = {
     heroTitle: "Creo siti web per la tua",
     heroTitleSpan: "attivita'",
     heroDesc: "Realizzo siti vetrina moderni, veloci e ottimizzati per le attivita' locali. Dal ristorante alla palestra, dal negozio all'hotel.",
-    heroBadge1: "Frontend Developer at Nuvyta",
+    heroBadge1: "Frontend Developer",
     heroBadge2: "3+ clienti soddisfatti",
     heroBadge3: "Siti multilingue",
 
@@ -106,7 +106,7 @@ const messages = {
     viewCode: "Codice",
 
     aboutTag: "// Chi sono",
-    aboutText1: "Sono un Frontend Developer di Alghero, Sardegna. Di giorno lavoro in Nuvyta, un'azienda che sviluppa piattaforme cloud-native per il settore sanitario, dove costruisco interfacce complesse con Angular, TypeScript e RxJS.",
+    aboutText1: "Sono un Frontend Developer di Alghero, Sardegna. Di giorno lavoro in un'azienda che sviluppa piattaforme cloud-native per il settore sanitario, dove costruisco interfacce con Angular, TypeScript e RxJS.",
     aboutText2: "Nel tempo libero aiuto le attivita' locali a essere presenti online con siti vetrina professionali, veloci e ottimizzati per i motori di ricerca.",
     aboutCta: "Parliamo del tuo progetto",
     stackTag: "// Stack tecnico",
