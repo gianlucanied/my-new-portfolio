@@ -16,6 +16,13 @@ export default {
         open: false,
         slides: [],
         index: 0,
+        zoom: 1,
+        panX: 0,
+        panY: 0,
+        panning: false,
+        panStartX: 0,
+        panStartY: 0,
+        _panMoved: false,
       },
       skills: [
         {
@@ -88,24 +95,24 @@ export default {
           descKey: "padelDesc",
           tagsKey: "padelTags",
           live: "https://padelalghero.com/",
-          github: "https://github.com/gianlucanied/pclub-project",
-          slides: ["home-padel.png", "about-padel.png", "contacts-padel.png"],
+          github: null,
+          slides: ["padel1.png", "padel2.png", "padel3.png"],
         },
         {
           titleKey: "rentTitle",
           descKey: "rentDesc",
           tagsKey: "rentTags",
-          live: null,
+          live: "https://rentacarexpress.it/",
           github: null,
-          slides: ["hp-avada.png", "prices-avada.png", "about-avada.png"],
+          slides: ["rent1.png", "rent2.png", "rent3.png"],
         },
         {
           titleKey: "pesceTitle",
           descKey: "pesceDesc",
           tagsKey: "pesceTags",
-          live: null,
+          live: "https://pescedoroalghero.it/",
           github: null,
-          slides: ["home-padel.png", "about-padel.png", "contacts-padel.png"],
+          slides: ["pesce1.png", "pesce2.png", "pesce3.png"],
         },
       ],
       serviceKeys: [
@@ -133,6 +140,16 @@ export default {
     };
   },
   computed: {
+    lbImgStyle() {
+      return {
+        transform: `translate(${this.lightbox.panX}px, ${this.lightbox.panY}px) scale(${this.lightbox.zoom})`,
+        cursor: this.lightbox.zoom > 1
+          ? (this.lightbox.panning ? 'grabbing' : 'grab')
+          : 'zoom-in',
+        transition: this.lightbox.panning ? 'none' : 'transform 0.2s ease',
+        userSelect: 'none',
+      };
+    },
     trackItems() {
       return [...this.skills, ...this.skills, ...this.skills, ...this.skills];
     },
@@ -155,21 +172,58 @@ export default {
       const ctx = canvas.getContext("2d");
       canvas.width = canvas.offsetWidth;
       canvas.height = canvas.offsetHeight;
-      const dots = Array.from({ length: 60 }, () => ({
+
+      const mouse = { x: -9999, y: -9999 };
+      const REPEL_RADIUS = 120;
+      const REPEL_STRENGTH = 5;
+
+      window.addEventListener("mousemove", (e) => {
+        const rect = canvas.getBoundingClientRect();
+        mouse.x = e.clientX - rect.left;
+        mouse.y = e.clientY - rect.top;
+      });
+      window.addEventListener("mouseleave", () => {
+        mouse.x = -9999;
+        mouse.y = -9999;
+      });
+
+      const dots = Array.from({ length: 200 }, () => ({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        r: Math.random() * 1.5 + 0.5,
-        dx: (Math.random() - 0.5) * 0.4,
-        dy: (Math.random() - 0.5) * 0.4,
-        o: Math.random() * 0.4 + 0.1,
+        r: Math.random() * 2 + 0.8,
+        dx: (Math.random() - 0.5) * 0.5,
+        dy: (Math.random() - 0.5) * 0.5,
+        baseDx: 0,
+        baseDy: 0,
+        o: Math.random() * 0.5 + 0.3,
       }));
+      dots.forEach((d) => {
+        d.baseDx = d.dx;
+        d.baseDy = d.dy;
+      });
+
       const draw = () => {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         dots.forEach((d) => {
+          const mx = d.x - mouse.x;
+          const my = d.y - mouse.y;
+          const dist = Math.hypot(mx, my);
+          if (dist < REPEL_RADIUS && dist > 0) {
+            const force = (1 - dist / REPEL_RADIUS) * REPEL_STRENGTH;
+            d.dx += (mx / dist) * force * 0.15;
+            d.dy += (my / dist) * force * 0.15;
+          }
+          // friction — drifts back to base velocity
+          d.dx += (d.baseDx - d.dx) * 0.04;
+          d.dy += (d.baseDy - d.dy) * 0.04;
+
+          ctx.shadowBlur = 8;
+          ctx.shadowColor = `rgba(255,140,0,0.6)`;
           ctx.beginPath();
           ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
           ctx.fillStyle = `rgba(255,140,0,${d.o})`;
           ctx.fill();
+          ctx.shadowBlur = 0;
           d.x += d.dx;
           d.y += d.dy;
           if (d.x < 0 || d.x > canvas.width) d.dx *= -1;
@@ -178,12 +232,12 @@ export default {
         dots.forEach((a, i) => {
           dots.slice(i + 1).forEach((b) => {
             const dist = Math.hypot(a.x - b.x, a.y - b.y);
-            if (dist < 100) {
+            if (dist < 140) {
               ctx.beginPath();
               ctx.moveTo(a.x, a.y);
               ctx.lineTo(b.x, b.y);
-              ctx.strokeStyle = `rgba(255,140,0,${0.06 * (1 - dist / 100)})`;
-              ctx.lineWidth = 0.5;
+              ctx.strokeStyle = `rgba(255,140,0,${0.18 * (1 - dist / 140)})`;
+              ctx.lineWidth = 0.7;
               ctx.stroke();
             }
           });
@@ -204,13 +258,16 @@ export default {
     },
     closeLightbox() {
       this.lightbox.open = false;
+      this.resetZoom();
       document.body.style.overflow = "";
     },
     lightboxNext() {
+      this.resetZoom();
       this.lightbox.index =
         (this.lightbox.index + 1) % this.lightbox.slides.length;
     },
     lightboxPrev() {
+      this.resetZoom();
       this.lightbox.index =
         (this.lightbox.index - 1 + this.lightbox.slides.length) %
         this.lightbox.slides.length;
@@ -220,6 +277,57 @@ export default {
       if (e.key === "ArrowRight") this.lightboxNext();
       if (e.key === "ArrowLeft") this.lightboxPrev();
       if (e.key === "Escape") this.closeLightbox();
+      if (e.key === "+" || e.key === "=") this.lbZoomIn();
+      if (e.key === "-") this.lbZoomOut();
+    },
+    resetZoom() {
+      this.lightbox.zoom = 1;
+      this.lightbox.panX = 0;
+      this.lightbox.panY = 0;
+      this.lightbox.panning = false;
+      this.lightbox._panMoved = false;
+    },
+    lbGoToSlide(i) {
+      this.lightbox.index = i;
+      this.resetZoom();
+    },
+    lbWheel(e) {
+      const delta = e.deltaY < 0 ? 0.25 : -0.25;
+      const newZoom = parseFloat(Math.min(4, Math.max(1, this.lightbox.zoom + delta)).toFixed(2));
+      if (newZoom === 1) { this.lightbox.panX = 0; this.lightbox.panY = 0; }
+      this.lightbox.zoom = newZoom;
+    },
+    lbPanStart(e) {
+      if (this.lightbox.zoom <= 1) return;
+      this.lightbox.panning = true;
+      this.lightbox._panMoved = false;
+      this.lightbox.panStartX = e.clientX - this.lightbox.panX;
+      this.lightbox.panStartY = e.clientY - this.lightbox.panY;
+    },
+    lbPanMove(e) {
+      if (!this.lightbox.panning) return;
+      this.lightbox._panMoved = true;
+      this.lightbox.panX = e.clientX - this.lightbox.panStartX;
+      this.lightbox.panY = e.clientY - this.lightbox.panStartY;
+    },
+    lbPanEnd() {
+      this.lightbox.panning = false;
+    },
+    lbClickImg() {
+      if (this.lightbox._panMoved) { this.lightbox._panMoved = false; return; }
+      if (this.lightbox.zoom === 1) {
+        this.lightbox.zoom = 2;
+      } else {
+        this.resetZoom();
+      }
+    },
+    lbZoomIn() {
+      this.lightbox.zoom = parseFloat(Math.min(4, this.lightbox.zoom + 0.5).toFixed(2));
+    },
+    lbZoomOut() {
+      const z = parseFloat(Math.max(1, this.lightbox.zoom - 0.5).toFixed(2));
+      if (z === 1) { this.lightbox.panX = 0; this.lightbox.panY = 0; }
+      this.lightbox.zoom = z;
     },
   },
 };
@@ -232,10 +340,22 @@ export default {
       v-if="lightbox.open"
       class="lightbox-overlay"
       @click.self="closeLightbox"
+      @wheel.prevent="lbWheel"
+      @mousemove="lbPanMove"
+      @mouseup="lbPanEnd"
     >
       <button class="lightbox-close" @click="closeLightbox">
         <i class="fa-solid fa-xmark"></i>
       </button>
+      <div class="lb-zoom-bar">
+        <button class="lb-zoom-btn" @click="lbZoomOut" :disabled="lightbox.zoom <= 1">
+          <i class="fa-solid fa-minus"></i>
+        </button>
+        <span class="lb-zoom-pct">{{ Math.round(lightbox.zoom * 100) }}%</span>
+        <button class="lb-zoom-btn" @click="lbZoomIn" :disabled="lightbox.zoom >= 4">
+          <i class="fa-solid fa-plus"></i>
+        </button>
+      </div>
       <button class="lightbox-arrow lightbox-arrow-left" @click="lightboxPrev">
         <i class="fa-solid fa-chevron-left"></i>
       </button>
@@ -245,6 +365,9 @@ export default {
           :key="lightbox.index"
           class="lightbox-img"
           alt="preview"
+          :style="lbImgStyle"
+          @mousedown.prevent="lbPanStart"
+          @click="lbClickImg"
         />
       </div>
       <button class="lightbox-arrow lightbox-arrow-right" @click="lightboxNext">
@@ -259,7 +382,7 @@ export default {
           :key="i"
           class="lightbox-dot"
           :class="{ active: i === lightbox.index }"
-          @click="lightbox.index = i"
+          @click="lbGoToSlide(i)"
         ></span>
       </div>
     </div>
@@ -361,6 +484,55 @@ export default {
     </div>
   </section>
 
+  
+  <!-- ── CONTATTI ── -->
+  <section class="contacts" id="contacts" data-aos="fade-up">
+    <div class="contacts-inner">
+      <div class="contacts-tag">{{ $t("contactsTag") }}</div>
+      <h2 class="contacts-title">
+        {{ $t('contactsTitle') }}<br>
+        <span>{{ $t('contactsTitleSpan') }}</span>
+      </h2>
+      <p class="contacts-sub">{{ $t("contactsSub") }}</p>
+      <a href="mailto:gianluca.nieddu96@gmail.com" class="contacts-email">
+        gianluca.nieddu96@gmail.com
+        <i class="fa-solid fa-arrow-right"></i>
+      </a>
+      <div class="contacts-socials">
+        <a
+          href="https://www.linkedin.com/in/gianluca-nieddu-8149a3236/"
+          target="_blank"
+          class="contacts-social-link"
+        >
+          <i class="fa-brands fa-linkedin"></i>
+          <span>LinkedIn</span>
+        </a>
+        <a
+          href="https://github.com/gianlucanied"
+          target="_blank"
+          class="contacts-social-link"
+        >
+          <i class="fa-brands fa-github"></i>
+          <span>GitHub</span>
+        </a>
+        <a
+          href="https://www.instagram.com/gianlucanied/"
+          target="_blank"
+          class="contacts-social-link"
+        >
+          <i class="fa-brands fa-instagram"></i>
+          <span>Instagram</span>
+        </a>
+      </div>
+      <div class="contacts-footer">
+        <span
+          >© {{ new Date().getFullYear() }} Gianluca Nieddu — Built with
+          Vue.js</span
+        >
+      </div>
+    </div>
+  </section>
+
   <!-- ── CHI SONO ── -->
   <section id="about" class="about" data-aos="fade-up">
     <div class="about-inner">
@@ -409,53 +581,6 @@ export default {
     </div>
   </section>
 
-  <!-- ── CONTATTI ── -->
-  <section class="contacts" id="contacts" data-aos="fade-up">
-    <div class="contacts-inner">
-      <div class="contacts-tag">{{ $t("contactsTag") }}</div>
-      <h2 class="contacts-title">
-        {{ $t('contactsTitle') }}<br>
-        <span>{{ $t('contactsTitleSpan') }}</span>
-      </h2>
-      <p class="contacts-sub">{{ $t("contactsSub") }}</p>
-      <a href="mailto:gianluca.nieddu96@gmail.com" class="contacts-email">
-        gianluca.nieddu96@gmail.com
-        <i class="fa-solid fa-arrow-right"></i>
-      </a>
-      <div class="contacts-socials">
-        <a
-          href="https://www.linkedin.com/in/gianluca-nieddu-8149a3236/"
-          target="_blank"
-          class="contacts-social-link"
-        >
-          <i class="fa-brands fa-linkedin"></i>
-          <span>LinkedIn</span>
-        </a>
-        <a
-          href="https://github.com/gianlucanied"
-          target="_blank"
-          class="contacts-social-link"
-        >
-          <i class="fa-brands fa-github"></i>
-          <span>GitHub</span>
-        </a>
-        <a
-          href="https://www.instagram.com/gianlucanied/"
-          target="_blank"
-          class="contacts-social-link"
-        >
-          <i class="fa-brands fa-instagram"></i>
-          <span>Instagram</span>
-        </a>
-      </div>
-      <div class="contacts-footer">
-        <span
-          >© {{ new Date().getFullYear() }} Gianluca Nieddu — Built with
-          Vue.js</span
-        >
-      </div>
-    </div>
-  </section>
 </template>
 
 <style scoped>
@@ -597,6 +722,55 @@ export default {
 .lightbox-dot.active {
   background: var(--main-color);
   transform: scale(1.3);
+}
+
+/* ── LIGHTBOX ZOOM BAR ── */
+.lb-zoom-bar {
+  position: absolute;
+  top: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 140, 0, 0.25);
+  border-radius: 30px;
+  padding: 5px 14px;
+  z-index: 3;
+}
+
+.lb-zoom-btn {
+  background: none;
+  border: none;
+  color: var(--main-color);
+  font-size: 1.2rem;
+  cursor: pointer;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background 0.2s;
+  padding: 0;
+}
+
+.lb-zoom-btn:hover:not(:disabled) {
+  background: rgba(255, 140, 0, 0.18);
+}
+
+.lb-zoom-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.lb-zoom-pct {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.6);
+  min-width: 42px;
+  text-align: center;
 }
 
 /* ── SLIDE ZOOM HINT ── */
